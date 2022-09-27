@@ -1,11 +1,9 @@
-GOOS=linux
-GOARCH=386
-
 .PHONY: build
 
-GIT_COMMIT := $(shell git rev-list -1 HEAD)
+#GIT_COMMIT := $(shell git rev-list -1 HEAD)
 
 build:
-	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -ldflags "-X main.gitCommit=$(GIT_COMMIT)" .
-
+	go build -ldflags="-X 'main.Version=v2.1.0'"
+run:
+	./testVersioning.exe
 
